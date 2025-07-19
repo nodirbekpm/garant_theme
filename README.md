@@ -1,0 +1,1 @@
+# garant_theme
