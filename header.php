@@ -1,3 +1,19 @@
+<?php
+$front_page_id = get_option('page_on_front');
+$banner_hidden = get_field('banner_hidden', $front_page_id);
+$banner_title = get_field('banner_title', $front_page_id);
+$banner_text = get_field('banner_text', $front_page_id);
+
+$header_logo = get_field('header_logo', 'option');
+$whatsapp = get_field('whatsapp', 'option');
+$vk = get_field('vk', 'option');
+$link_url = is_array($vk['link']) && isset($vk['link']['url']) ? $vk['link']['url'] : '#';
+$icon_url = isset($vk['icon']['url']) ? $vk['icon']['url'] : '';
+$phone = get_field('phone', 'option');
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +34,11 @@
     <!-- font-family inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+          rel="stylesheet">
     <!-- css -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/css/main.css">
-    <title>Document</title>
+    <title>Гарант</title>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -33,8 +50,8 @@
         <div class="container">
             <!-- header row -->
             <div class="header_row">
-                <a href="index.html" class="logo">
-                    <img src="assets/images/header_logo.svg" alt="">
+                <a href="<?php echo home_url(); ?>" class="logo">
+                    <img src="<?php echo $header_logo['url'] ?>" alt="">
                 </a>
 
                 <nav>
@@ -45,35 +62,42 @@
 
                 <div class="contact_info_row">
                     <div class="phone">
-                        <img src="assets/images/phone_icon.svg" alt="" class="phone_icon">
-                        <a href="tel:79309465784" class="phone_text">+7 (930) 946-57-84</a>
+                        <img src="<?php echo get_template_directory_uri() ?>assets/images/phone_icon.svg" alt="" class="phone_icon">
+                        <a href="tel:<?= $phone['phone'] ?>" class="phone_text"><?= $phone['title'] ?></a>
                     </div>
 
                     <div class="socials">
-                        <a href="http://whatsapp.com/" target="_blank">
-                            <img src="assets/images/whatsapp_icon.svg" alt="">
+                        <a href="<?php echo $whatsapp['link']['url'] ?>" target="_blank">
+                            <img src="<?php echo $whatsapp['icon']['url'] ?>" alt="">
                         </a>
-
-                        <a href="https://vk.com/" target="_blank">
-                            <img src="assets/images/wk_icon.svg" alt="">
+                        <?php if ($icon_url): ?>
+                        <a href="<?php echo esc_url($link_url); ?>" target="_blank">
+                            <img src="<?php echo esc_url($icon_url); ?>" alt="">
                         </a>
+                        <?php endif; ?>
                     </div>
                 </div>
 
             </div>
 
-            <!-- header_hero -->
-            <div class="hero">
-                <div class="info">
-                    <div class="title">Гарант развития</div>
-                    <div class="sub_title">Аренда, продажа коммерческой недвижимости своей и партнеров, строительство индустриальных объектов, консультации по рынкам CRE</div>
+
+            <?php if ($banner_hidden !== "Да"): ?>
+                <!-- header_hero -->
+                <div class="hero">
+                    <div class="info">
+                        <div class="title"><?= $banner_title ?></div>
+                        <div class="sub_title">
+                            <?= $banner_text ?>
+                        </div>
+                    </div>
+                    <div class="button_container">
+                        <a href="<?php echo $whatsapp['link']['url'] ?>" target="_blank" class="button">
+                            <img src="<?php echo $whatsapp['icon']['url'] ?>" alt="">
+                            <span><?= $whatsapp['title'] ?></span>
+                        </a>
+                    </div>
                 </div>
-                <div class="button_container">
-                    <a href="http://whatsapp.com/" target="_blank" class="button">
-                        <img src="assets/images/whatsapp_icon.svg" alt="">
-                        <span>Написать нам whatsАpp</span>
-                    </a>
-                </div>
-            </div>
+
+            <?php endif; ?>
         </div>
     </header>

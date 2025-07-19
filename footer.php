@@ -1,11 +1,22 @@
 <?php wp_footer(); ?>
+
+<?php
+$footer_logo = get_field('footer_logo', 'option');
+$copyright = get_field('copyright', 'option');
+$footer_text = get_field('footer_text', 'option');
+$whatsapp = get_field('whatsapp', 'option');
+$vk = get_field('vk', 'option');
+$link_url = is_array($vk['link']) && isset($vk['link']['url']) ? $vk['link']['url'] : '#';
+$icon_url = isset($vk['icon']['url']) ? $vk['icon']['url'] : '';
+?>
+
 <!-- footer -->
 <footer>
     <div class="container">
         <div class="footer_row">
             <div class="top">
-                <a href="index.html" class="logo">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/images/footer_logo.svg" alt="">
+                <a href="<?php echo home_url(); ?>" class="logo">
+                    <img src="<?php echo $footer_logo['url'] ?>" alt="">
                 </a>
                 <nav>
                     <a href="#objects" class="nav_item">объекты</a>
@@ -14,20 +25,20 @@
                 </nav>
 
                 <div class="button_container">
-                    <a href="https://vk.com/" target="_blank">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/images/wk_icon.svg" alt="">
+                    <a href="<?php echo $link_url ?>" target="_blank">
+                        <img src="<?php echo $icon_url ?>" alt="">
                     </a>
-                    <a href="http://whatsapp.com/" target="_blank" class="button">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/images/whatsapp_icon.svg" alt="">
-                        <span>Написать нам whatsАpp</span>
+                    <a href="<?php echo $whatsapp['link']['url'] ?>" target="_blank" class="button">
+                        <img src="<?php echo $whatsapp['icon']['url'] ?>" alt="">
+                        <span><?= $whatsapp['title'] ?></span>
                     </a>
                 </div>
             </div>
 
             <div class="bottom">
-                <p class="text">© 2025 Гарант развития</p>
+                <p class="text"><?= $copyright ?></p>
                 <a href="https://vk.link/skladybazy?act=terms" target="_blank" class="text">Политика обработки персональных данных</a>
-                <p class="text">Вся представленная на сайте информация, носит информационный характер и не является публичной офертой</p>
+                <p class="text"><?= $footer_text ?></p>
             </div>
         </div>
     </div>
