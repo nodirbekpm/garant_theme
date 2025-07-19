@@ -1,0 +1,134 @@
+header{
+    padding:16px 0 264px 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%), 
+    url(../images/header_bg.png) lightgray 50% / cover no-repeat;
+
+    @media #{$smallTab}{
+        padding: 8px 0 120px 0;  
+    }
+
+    .header_row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius:  8px;
+        background: rgba(255, 255, 255, 0.50);
+        backdrop-filter: blur(20px);
+        padding: 16px 32px;
+
+        @media #{$mobile}{
+            padding: 8px 16px
+        }
+
+        .logo{
+            @media #{$laptop}{
+                zoom: 0.8;
+            }
+
+            @media #{$smallTab}{
+                zoom: 0.7;
+            }
+
+            @media #{$mobile}{
+                 width: 179px;
+                height: 40px;
+                zoom: 1;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        nav{
+            display: flex;
+            gap:0 32px;
+            align-items: center;
+
+            @media #{$bigTab}{
+                display: none;
+            }
+
+            .nav_item{
+                line-height: 24px; /* 150% */
+                text-transform: uppercase;
+            }
+        }
+
+        .contact_info_row{
+            display: flex;
+            gap:0 24px;
+            align-items: center;
+
+            .phone{
+                display: flex;
+                gap:0 8px;
+                align-items: center;
+
+                @media #{$smallTab}{
+                    display: none;
+                }
+
+                .phone_text{
+                    font-size: 24px;
+                    font-weight: 500;
+                    line-height: 120%; /* 28.8px */
+                }
+            }
+
+            .socials{
+                display: flex;
+                align-items: center;
+                gap:0 16px;
+
+                img{
+                    @media #{$mobile}{
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    .hero{
+        margin-top: 136px;
+        
+        @media #{$smallTab}{
+            margin-top: 50px;
+        }
+        
+        .info{
+            display: flex;
+            flex-direction: column;
+            gap:16px 0;
+            align-items: center;
+
+            .title{
+                line-height: 120%; /* 76.8px */
+                text-transform: uppercase;
+                font-size: 64px;
+
+                @media #{$smallTab}{
+                    font-size: 36px;
+                }
+
+                @media (max-width:370px){
+                    font-size: 31px;
+                }
+            }
+
+            .sub_title{
+                font-weight: 500;
+                line-height: 120%; /* 28.8px */
+                font-size: 24px;
+                text-align: center;
+                max-width: 1136px;
+
+                 @media #{$smallTab}{
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

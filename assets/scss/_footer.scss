@@ -1,0 +1,104 @@
+footer{
+    margin-top: 40px;
+    background: #657A64;
+    padding: 16px 0;
+
+    @media #{$mobile}{
+        margin-top: 16px;
+    }
+
+    .footer_row{
+        display: flex;
+        flex-direction: column;
+        gap:43px 0;
+
+        @media #{$mobile}{
+            gap:24px 0;
+        }
+
+        .top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            @media #{$tab}{
+                flex-direction: column;
+                gap:40px 0;
+            }
+            
+            .logo{
+                @media #{$bigTab}{
+                    zoom: 0.8;
+                }
+
+                @media #{$mobile}{
+                    width: 340px;
+                    zoom: 1;
+
+                    img{
+                        width: 100%;
+                    }
+                }
+            }
+
+             nav{
+                display: flex;
+                gap:0 32px;
+                align-items: center;
+
+                @media #{$mobile}{
+                    gap:0 16px;
+                }
+
+                .nav_item{
+                    line-height: 24px; /* 150% */
+                    text-transform: uppercase;
+
+                    @media #{$mobile}{
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .button_container{
+                align-items: center;
+                gap:0 24px;
+                margin-top: 0;
+               
+                .button{
+                    border: 1px solid #FFF;
+                    border-radius: 4px;
+                }
+            }
+        }
+
+        .bottom{
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+
+            @media #{$tab}{
+                flex-direction: column;
+                gap:8px 0;
+                align-items: center;
+            }
+
+            .text{
+                max-width: 480px;
+                width: 100%;
+                font-family: "Inter", sans-serif;
+                font-weight: 400;
+                line-height: 150%; /* 18px */
+                font-size: 12px;
+
+                @media #{$tab}{
+                    text-align: center;
+                }
+
+                @media #{$mobile}{
+                    text-align: start;
+                }
+            }
+        }
+    }
+}

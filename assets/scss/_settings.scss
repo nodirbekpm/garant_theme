@@ -1,0 +1,121 @@
+*,p,ul,ol,li{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+    color:  #F8F8F8;
+    font-family: "Geologica", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal; /* 150% */
+}
+
+a{
+    color:  #F8F8F8;
+    font-family: "Geologica", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal; /* 150% */
+    text-decoration: none;
+}
+
+.wrapper{
+    overflow: hidden;
+}
+
+.container{
+    max-width: 1536px;
+    padding: 0;
+    margin: 0 auto;
+
+    @media #{$bigLaptop} {
+        max-width: 1330px;
+    }
+    
+    @media #{$laptop} {
+        max-width: 1200px;
+    }
+
+    @media #{$bigTab} {
+        max-width: 992px;
+    }
+
+    @media #{$tab} {
+        max-width: 792px;
+    }
+
+    @media #{$smallTab} {
+        max-width: 576px;
+    }
+
+    @media #{$mobile} {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+.button_container{
+    margin-top: 64px;
+    display: flex;
+    justify-content: center;
+
+    @media #{$smallTab}{
+        margin-top: 40px; 
+    }
+    
+    .button{
+        display: flex;
+        gap:0 8px;
+        align-items: center;
+        padding: 16px 24px;
+        border-radius: 4px;
+        background:  #657A64;
+        /* Тень/1 */
+        box-shadow: 0px 8px 16px -8px rgba(15, 15, 15, 0.20); 
+
+        @media #{$smallTab}{
+            padding: 8px 16px;
+        }
+
+        img{
+            width: 24px;
+            height: 24px;
+        }
+
+        span{
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px; /* 150% */
+            text-transform: uppercase;
+
+            @media #{$smallTab}{
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.section_title{
+    color: var(---, #000);
+    /* Текстовые стили/H2 */
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 120%; /* 48px */
+    text-transform: uppercase;
+
+    @media #{$smallTab}{
+        font-size: 30px;
+    }
+
+    @media #{$mobile}{
+        margin-top: 24px;
+    }
+}
